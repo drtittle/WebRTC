@@ -49,8 +49,7 @@ function serverHandler(request, response)
 
 var app = server.createServer(serverHandler);
 
-// app.listen(appEnv.port, '0.0.0.0', function()
-app.listen('9001', '0.0.0.0', function()
+app.listen(appEnv.port, '0.0.0.0', function()
 {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url + ":" + appEnv.port);
@@ -89,7 +88,6 @@ require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(app, functio
     }
     catch (e)
     {
-    	
     }
 });
 
