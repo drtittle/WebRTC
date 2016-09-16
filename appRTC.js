@@ -6,27 +6,92 @@
 
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
-var express = require('express');
+// DT var express = require('express');
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
 
 // create a new express server
-var app = express();
+// DTvar app = express();
 
 // serve the files out of ./public as our main files
-app.use(express.static(__dirname + '/public'));
+// DT app.use(express.static(__dirname + '/public'));
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
 // start server on the specified port and binding host
+//app.listen(appEnv.port, '0.0.0.0', function()
+//{
+//  // print a message when the server starts listening
+//  console.log("server starting on " + appEnv.url + ":" + appEnv.port);
+//});
+
+var isUseHTTPs = false; 
+
+var server = require(isUseHTTPs ? 'https' : 'http'),
+    url = require('url'),
+    path = require('path'),
+    fs = require('fs');
+
+function serverHandler(request, response)
+{
+    var uri = url.parse(request.url).pathname, filename = path.join(process.cwd(), uri);
+
+    response.writeHead(200, {
+         'Content-Type': 'text/plain'
+    });
+    response.write('Hi there from a Custom Bluemix RTC Server over Node.js and Socket.io' + path.join('/', uri) + '\n');
+    response.end();
+    return;
+}
+
+var app = server.createServer(serverHandler);
+
 app.listen(appEnv.port, '0.0.0.0', function()
 {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url + ":" + appEnv.port);
 });
+
+require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(app, function(socket)
+{
+    try
+    {
+        var params = socket.handshake.query;
+
+        // "socket" object is totally in your own hands!
+        // do whatever you want!
+
+        // in your HTML page, you can access socket as following:
+        // connection.socketCustomEvent = 'custom-message';
+        // var socket = connection.getSocket();
+        // socket.emit(connection.socketCustomEvent, { test: true });
+
+        if (!params.socketCustomEvent)
+        {
+            params.socketCustomEvent = 'custom-message';
+        }
+
+        socket.on(params.socketCustomEvent, function(message)
+        {
+            try
+            {
+                socket.broadcast.emit(params.socketCustomEvent, message);
+            }
+            catch (e)
+            {
+            	
+            }
+        });
+    }
+    catch (e)
+    {
+    	
+    }
+});
+
 
 
 /*
@@ -171,10 +236,9 @@ app = app.listen(port, process.env.IP || '0.0.0.0', function()
 
     console.log('Server listening at ' + (isUseHTTPs ? 'https' : 'http') + '://' + addr.address + ':' + addr.port);
 });
-*/
 
-//require('./Signaling-Server.js')(app, function(socket)
-require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(app, function(socket)
+
+require('./Signaling-Server.js')(app, function(socket)
 {
     try
     {
@@ -210,3 +274,4 @@ require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(app, functio
     	
     }
 });
+*/
