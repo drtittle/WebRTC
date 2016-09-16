@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "node rtcmulticonnections-v3/server.js"
+		"start": "node /rtcmulticonnections-v3/server.js"
 	},
 	"dependencies": {
 		"express": "4.13.x",
