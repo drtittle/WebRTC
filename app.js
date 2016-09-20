@@ -15,7 +15,10 @@ var cfenv = require('cfenv');
 // create a new express server
 var app = express();
 
-// DT var io = require('socket.io')(server);
+// DT
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
@@ -30,8 +33,9 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 });
 
 
+
 // DT
-require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(app, function(socket)
+require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(server, function(socket)
 {
     try
     {
