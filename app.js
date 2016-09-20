@@ -16,8 +16,8 @@ var cfenv = require('cfenv');
 var app = express();
 
 // DT
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+//var server = require('http').createServer(app);
+//var io = require('socket.io')(server);
 
 
 // serve the files out of ./public as our main files
@@ -35,6 +35,7 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 
 
 // DT
+/*
 require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(server, function(socket)
 {
     try
@@ -70,3 +71,4 @@ require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(server, func
     {
     }
 });
+*/
