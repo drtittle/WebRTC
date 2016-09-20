@@ -132,12 +132,7 @@ function serverHandler(request, response)
     });
 }
 
-//var app = server.createServer(serverHandler);
-var app = server.createServer();
-
-// serve the files out of ./public as our main files
-//app.use(express.static(__dirname + '/public'));
-app.use(path.join(__dirname + '/public'));
+var app = server.createServer(serverHandler);
 
 
 app.listen(appEnv.port, '0.0.0.0', function()
