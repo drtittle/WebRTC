@@ -36,21 +36,6 @@ var server = require(isUseHTTPs ? 'https' : 'http'),
     fs = require('fs');
 
 
-/*
-function serverHandler(request, response)
-{
-    var uri = url.parse(request.url).pathname, filename = path.join(process.cwd(), uri);
-
-    response.writeHead(200, {
-         'Content-Type': 'text/plain'
-    });
-    response.write('Hi there from a Custom Bluemix RTC Server over Node.js and Socket.io' + path.join('/', uri) + '\n');
-    response.end();
-    return;
-}
-*/
-
-
 function serverHandler(request, response)
 {
     var uri = url.parse(request.url).pathname, filename = path.join(process.cwd(), uri);
@@ -147,14 +132,12 @@ require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(app, functio
     {
         var params = socket.handshake.query;
 
-        // "socket" object is totally in your own hands!
-        // do whatever you want!
-
-        // in your HTML page, you can access socket as following:
+        // The "socket" object is totally in your own hands, so do whatever you want!
+		//
+        // In your HTML page, you can access socket as following:
         // connection.socketCustomEvent = 'custom-message';
         // var socket = connection.getSocket();
         // socket.emit(connection.socketCustomEvent, { test: true });
-
         if (!params.socketCustomEvent)
         {
             params.socketCustomEvent = 'custom-message';
