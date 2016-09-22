@@ -18,6 +18,9 @@ var app = express();
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
 
+app.use(express.static(__dirname + '/node_modules/rtcmulticonnection-v3'));
+
+
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
