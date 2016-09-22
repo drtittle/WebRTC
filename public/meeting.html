@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
 
-    <title>Audio+Video+TextChat+FileSharing using RTCMultiConnection</title>
+    <title>WebRTC on Bluemix</title>
 
     <meta name="description" content="Share audio, video along with text chat and filesharing using RTCMultiConnection" />
-    <meta name="keywords" content="WebRTC,RTCMultiConnection,Demos,Experiments,Samples,Examples" />
+    <meta name="keywords" content="WebRTC, RTCMultiConnection, Demos, Experiments, Samples, Examples" />
 
     <style>
         video {
@@ -39,9 +39,10 @@
     <article>
 
         <header style="text-align: center;">
-            <h1>Audio+Video+TextChat+FileSharing using RTCMultiConnection</h1>
+            <h1>WebRTC on Bluemix</h1>
+            <!--
             <p>
-                <a href="https://rtcmulticonnection.herokuapp.com/">HOME</a>
+                <a href="http://zewebrtcserver.mybluemix.net">HOME</a>
                 <span> &copy; </span>
                 <a href="http://www.MuazKhan.com/" target="_blank">Muaz Khan</a> .
                 <a href="http://twitter.com/WebRTCWeb" target="_blank" title="Twitter profile for WebRTC Experiments">@WebRTCWeb</a> .
@@ -49,6 +50,7 @@
                 <a href="https://github.com/muaz-khan/RTCMultiConnection/issues?state=open" target="_blank">Latest issues</a> .
                 <a href="https://github.com/muaz-khan/RTCMultiConnection/commits/master" target="_blank">What's New?</a>
             </p>
+            -->
         </header>
 
         <div class="github-stargazers"></div>
@@ -67,20 +69,24 @@
                 <button id="join-room">Join Room</button>
                 <button id="open-or-join-room">Auto Open Or Join Room</button>
 
+				<!--
                 <br><br>
                 <input type="text" id="input-text-chat" placeholder="Enter Text Chat" disabled>
                 <button id="share-file" disabled>Share File</button>
                 <br><br>
                 <button id="btn-leave-room" disabled>Leave /or close the room</button>
-
+				-->
+				
                 <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;margin: 15px -10px;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
             </div>
 
+			<!--
             <div id="chat-container">
                 <div id="file-container"></div>
                 <div class="chat-output"></div>
             </div>
-
+			-->
+			
             <div id="videos-container"></div>
         </section>
 
@@ -140,7 +146,7 @@
             // ......................................................
             // ................FileSharing/TextChat Code.............
             // ......................................................
-
+            /*
             document.getElementById('share-file').onclick = function() {
                 var fileSelector = new FileSelector();
                 fileSelector.selectSingleFile(function(file) {
@@ -171,11 +177,12 @@
 
                 document.getElementById('input-text-chat').focus();
             }
-
+			*/
+			
+			
             // ......................................................
             // ..................RTCMultiConnection Code.............
             // ......................................................
-
             var connection = new RTCMultiConnection();
 
             // by default, socket.io server is assumed to be deployed on your own URL
@@ -226,21 +233,23 @@
             };
 
             connection.onmessage = appendDIV;
-            connection.filesContainer = document.getElementById('file-container');
+            //connection.filesContainer = document.getElementById('file-container');
 
             connection.onopen = function() {
-                document.getElementById('share-file').disabled = false;
-                document.getElementById('input-text-chat').disabled = false;
+                //document.getElementById('share-file').disabled = false;
+                //document.getElementById('input-text-chat').disabled = false;
                 document.getElementById('btn-leave-room').disabled = false;
 
                 document.querySelector('h1').innerHTML = 'You are connected with: ' + connection.getAllParticipants().join(', ');
             };
 
             connection.onclose = function() {
-                if(connection.getAllParticipants().length) {
+                if(connection.getAllParticipants().length)
+                {
                     document.querySelector('h1').innerHTML = 'You are still connected with: ' + connection.getAllParticipants().join(', ');
                 }
-                else {
+                else
+                {
                     document.querySelector('h1').innerHTML = 'Seems session has been closed or all participants left.';
                 }
             };
@@ -260,7 +269,9 @@
                 });
 
                 // don't display alert for moderator
-                if(connection.userid === event.userid) return;
+                if(connection.userid === event.userid) 
+                	return;
+                
                 document.querySelector('h1').innerHTML = 'Entire session has been closed by the moderator: ' + event.userid;
             };
 
@@ -279,8 +290,8 @@
             // ......................................................
             // ......................Handling Room-ID................
             // ......................................................
-
-            function showRoomURL(roomid) {
+            function showRoomURL(roomid)
+            {
                 var roomHashURL = '#' + roomid;
                 var roomQueryStringURL = '?roomid=' + roomid;
 
@@ -310,9 +321,12 @@
             })();
 
             var roomid = '';
-            if (localStorage.getItem(connection.socketMessageEvent)) {
+            if (localStorage.getItem(connection.socketMessageEvent))
+            {
                 roomid = localStorage.getItem(connection.socketMessageEvent);
-            } else {
+            }
+            else
+            {
                 roomid = connection.token();
             }
             document.getElementById('room-id').value = roomid;
@@ -323,11 +337,13 @@
             var hashString = location.hash.replace('#', '');
 
             var roomid = params.roomid;
-            if(!roomid && hashString.length) {
+            if(!roomid && hashString.length)
+            {
                 roomid = hashString;
             }
 
-            if(roomid && roomid.length) {
+            if(roomid && roomid.length)
+            {
                 document.getElementById('room-id').value = roomid;
                 localStorage.setItem(connection.socketMessageEvent, roomid);
 
@@ -338,7 +354,6 @@
                             connection.join(roomid);
                             return;
                         }
-
                         setTimeout(reCheckRoomPresence, 5000);
                     });
                 })();
@@ -347,16 +362,19 @@
             }
         </script>
 
+<!--
         <section class="experiment own-widgets latest-commits">
             <h2 class="header" id="updates" style="color: red;padding-bottom: .1em;"><a href="https://github.com/muaz-khan/RTCMultiConnection/commits/master">Latest Updates</a></h2>
             <div id="github-commits"></div>
         </section>
-
+-->
+<!--
         <section class="experiment own-widgets">
             <h2 class="header" id="updates" style="color: red;padding-bottom: .1em;"><a href="https://github.com/muaz-khan/RTCMultiConnection/issues">Latest Issues</a></h2>
             <div id="github-issues"></div>
         </section>
-
+-->
+<!--
         <section class="experiment">
             <h2 class="header" id="feedback">Feedback</h2>
             <div>
@@ -364,16 +382,20 @@
             </div>
             <button id="send-message" style="font-size: 1em;">Send Message</button><small style="margin-left:1em;">Enter your email too; if you want "direct" reply!</small>
         </section>
+-->
 
         <a href="https://github.com/muaz-khan/RTCMultiConnection" class="fork-left"></a>
 
         <script>
             window.useThisGithubPath = 'muaz-khan/RTCMultiConnection';
         </script>
+        
+<!--        
         <script src="https://cdn.webrtc-experiment.com/commits.js" async></script>
-
+-->
     </article>
 
+<!--
     <footer>
         <p>
             <a href="https://www.webrtc-experiment.com">WebRTC Experiments</a> © <a href="https://plus.google.com/+MuazKhan" rel="author" target="_blank">Muaz Khan</a>
@@ -381,7 +403,7 @@
             <a href="https://github.com/muaz-khan" target="_blank">Github</a>
         </p>
     </footer>
-
+-->
 </body>
 
 </html>
