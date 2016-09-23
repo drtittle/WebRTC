@@ -15,9 +15,10 @@ var cfenv = require('cfenv');
 // create a new express server
 var app = express();
 
-// serve the files out of ./public as our main files
+// serve our custom files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
 
+// mount a 'virtual path' to point at our added node packages so Express will resolve
 app.use('/node_modules/rtcmulticonnection-v3', express.static(__dirname + '/node_modules/rtcmulticonnection-v3'));
 
 // get the app environment from Cloud Foundry
