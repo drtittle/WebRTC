@@ -53,9 +53,9 @@
             -->
         </header>
 
-		<!--
+		
         <div class="github-stargazers"></div>
-		-->
+		
 		
 		<!--
         <blockquote>
@@ -112,12 +112,8 @@
             
         
 		<script src="./node_modules/rtcmulticonnection-v3/RTCMultiConnection.min.js"></script>
-		
 		<script src="./node_modules/rtcmulticonnection-v3/dist/rmc3.fbr.min.js"></script>
 		<script src="script/getMediaElement.js"></script>
-		<!--
-		<script src="./node_modules/rtcmulticonnection-v3/node_modules/socket.io/lib/socket.io.js"></script>
-		-->
         <script src="/socket.io/socket.io.js"></script>
 
 		
@@ -150,14 +146,16 @@
             document.getElementById('btn-leave-room').onclick = function() {
                 this.disabled = true;
 
-                if(connection.isInitiator) {
+                if(connection.isInitiator)
+                {
                     // use this method if you did NOT set "autoCloseEntireSession===true"
                     // for more info: https://github.com/muaz-khan/RTCMultiConnection#closeentiresession
                     connection.closeEntireSession(function() {
                         document.querySelector('h1').innerHTML = 'Entire session has been closed.';
                     });
                 }
-                else {
+                else
+                {
                     connection.leave();
                 }
             };
@@ -174,11 +172,13 @@
             };
 
             document.getElementById('input-text-chat').onkeyup = function(e) {
-                if (e.keyCode != 13) return;
+                if (e.keyCode != 13)
+                	return;
 
                 // removing trailing/leading whitespace
                 this.value = this.value.replace(/^\s+|\s+$/g, '');
-                if (!this.value.length) return;
+                if (!this.value.length)
+                	return;
 
                 connection.send(this.value);
                 appendDIV(this.value);
@@ -285,7 +285,8 @@
                 });
 
                 // don't display alert for moderator
-                if(connection.userid === event.userid) return;
+                if(connection.userid === event.userid)
+                	return;
                 document.querySelector('h1').innerHTML = 'Entire session has been closed by the moderator: ' + event.userid;
             };
 
@@ -335,9 +336,12 @@
             })();
 
             var roomid = '';
-            if (localStorage.getItem(connection.socketMessageEvent)) {
+            if (localStorage.getItem(connection.socketMessageEvent))
+            {
                 roomid = localStorage.getItem(connection.socketMessageEvent);
-            } else {
+            }
+            else
+            {
                 roomid = connection.token();
             }
             document.getElementById('room-id').value = roomid;
@@ -348,22 +352,24 @@
             var hashString = location.hash.replace('#', '');
 
             var roomid = params.roomid;
-            if(!roomid && hashString.length) {
+            if(!roomid && hashString.length)
+            {
                 roomid = hashString;
             }
 
-            if(roomid && roomid.length) {
+            if(roomid && roomid.length)
+            {
                 document.getElementById('room-id').value = roomid;
                 localStorage.setItem(connection.socketMessageEvent, roomid);
 
                 // auto-join-room
                 (function reCheckRoomPresence() {
                     connection.checkPresence(roomid, function(isRoomExists) {
-                        if(isRoomExists) {
+                        if(isRoomExists)
+                        {
                             connection.join(roomid);
                             return;
                         }
-
                         setTimeout(reCheckRoomPresence, 5000);
                     });
                 })();
