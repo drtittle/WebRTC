@@ -524,7 +524,7 @@ li li h2 {
     color: rgb(6, 101, 243);
 }
 
-.fork-left, .fork-right, .deploy-right {
+.fork-left, .fork-right {
     background-repeat: no-repeat;
     background-position: center center;
     width: 140px;
@@ -546,7 +546,11 @@ li li h2 {
 }
 
 .deploy-right {
-    position: absolute;
+	background-repeat: no-repeat;
+    background-position: center center;
+    width: 149px;
+    height: 149px;
+	position: absolute;
     top: 0;
     right: 0;
     background: url('/images/deploy-right.png');
