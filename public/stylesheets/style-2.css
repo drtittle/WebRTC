@@ -524,7 +524,7 @@ li li h2 {
     color: rgb(6, 101, 243);
 }
 
-.fork-left, .fork-right {
+.fork-left, .fork-right, .deploy-right {
     background-repeat: no-repeat;
     background-position: center center;
     width: 140px;
@@ -535,21 +535,21 @@ li li h2 {
     position: absolute;
     top: 0;
     left: 0;
-    background: url('./images/fork-left.png');
+    background: url('/images/fork-left.png');
 }
 
 .fork-right {
     position: absolute;
     top: 0;
     right: 0;
-    background: url('./images/fork-right.png');
+    background: url('/images/fork-right.png');
 }
 
 .deploy-right {
     position: absolute;
     top: 0;
     right: 0;
-    background: url('./images/deploy-right.png');
+    background: url('/images/deploy-right.png');
 }
 
 select {
