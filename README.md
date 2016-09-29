@@ -1,6 +1,8 @@
-# Node.js Starter Overview
+# WebRTC6 Node.js Starter Overview
 
-The Node.js Starter demonstrates a simple, reusable Node.js web application based on the Express framework.
+The WebRTC Node.js Starter demonstrates a simple, reusable Node.js web application based on the Express framework that is implementing
+webRTC patterns for Audio+Video+Data sharing using MultiRTC.
+.
 
 ## Run the app locally
 

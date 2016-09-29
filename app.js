@@ -1,7 +1,7 @@
 /*eslint-env node*/
 
 //------------------------------------------------------------------------------
-// node.js starter application for Bluemix
+// WebRTC starter application for Bluemix
 //------------------------------------------------------------------------------
 
 // This application uses express as its web server
@@ -32,7 +32,8 @@ var server = app.listen(appEnv.port, '0.0.0.0', function() {
 });
 
 
-// DT
+// David Tittle
+// Adding an attachment for socket broadcasting
 require('./node_modules/rtcmulticonnection-v3/Signaling-Server.js')(server, function(socket)
 {
     try

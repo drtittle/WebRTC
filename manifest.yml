@@ -3,6 +3,6 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: ZEWebRTCServer
-  host: ZEWebRTCServer
+  name: WebRTC6
+  host: WebRTC6
   disk_quota: 1024M
