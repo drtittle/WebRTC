@@ -26,18 +26,25 @@ To use it:
 ## Create using your Bluemix Dashboard
 1. [Create a Node.js Runtime](https://console.ng.bluemix.net/catalog/starters/sdk-for-nodejs/?taxonomyNavigation=apps)
    ![Create a Node.js Runtime](./public/images/readme/1-SelectNodeRuntime.png)
+   
 2. Enter a unique Application Name and Host Name
    ![Enter a unique Application Name and Host Name](./public/images/readme/2-EnterUniqueName.png)
+   
 3. Enable Continuous Delivery
    ![Enable Continuous Delivery](./public/images/readme/3-EnableContinuousDelivery.png)
+   
 4. Configure GitHub Repository
    ![Configure GitHub Repository](./public/images/readme/4-ConfigureGithub.png)
    and overwrite the default Source Repository URL setting with the following [GitHub Link]: https://github.com/drtittle/WebRTC
+   
 5. Click 'Create'
+
 6. Open the Eclipse Web IDE
    ![Open the Eclipse Web IDE](./public/images/readme/5-OpenEclipseWebIDE.png)
+   
 7. Edit the Manifest.yml file changing the 'name;' and 'host:' entries to match the values you entered in Step #2 above.
    ![Open the Eclipse Web IDE](./public/images/readme/7-EditManifestYML.png) and 'Save' the file.
+   
 8. Goto the Github tab
    ![Goto GitHub](./public/images/readme/8-GotoGitHub.png) and enter a comment, select 'Commit' and then 'Sync'.
    
