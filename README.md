@@ -12,7 +12,7 @@ The basic function of this presentation is to create a 'room', or a 'mission', w
 
 It is important for each user to 'ALLOW' the application access to thier microphone and/or camera.  The application will reasonably adapt if one, or both, are disallowed, but it will give a much better experience to do both.
 
-To use it:
+## To use it:
 1. Have a host open a 'room' or a mission.  This name must be unique or the application will simply join you to an already in-use room.
 2. The host copies the rooms 'Unique ID' and shares it will others.  This can easily be done automatically by various methods of creating/sharing rooms.
 3. Each user should open the link in a up-to-date browser and allow it to use the microphone and camera.  Unfortunately, Internet Explorer seems to hobble somewhat using this applicatin as it doesn't fully support some of the WebRTC functions.
@@ -24,29 +24,23 @@ To use it:
 2. Access to Githup
 
 ## Create using your Bluemix Dashboard
-1. [Create a Node.js Runtime](https://console.ng.bluemix.net/catalog/starters/sdk-for-nodejs/?taxonomyNavigation=apps)
-   ![Create a Node.js Runtime](./public/images/readme/1-SelectNodeRuntime.png)
-   
-2. Enter a unique Application Name and Host Name
-   ![Enter a unique Application Name and Host Name](./public/images/readme/2-EnterUniqueName.png)
-   
-3. Enable Continuous Delivery
-   ![Enable Continuous Delivery](./public/images/readme/3-EnableContinuousDelivery.png)
-   
+1. [Create a Node.js Runtime](https://console.ng.bluemix.net/catalog/starters/sdk-for-nodejs/?taxonomyNavigation=apps)   
+   ![Create a Node.js Runtime](./public/images/readme/1-SelectNodeRuntime.png)   
+2. Enter a unique Application Name and Host Name   
+   ![Enter a unique Application Name and Host Name](./public/images/readme/2-EnterUniqueName.png)      
+3. Enable Continuous Delivery   
+   ![Enable Continuous Delivery](./public/images/readme/3-EnableContinuousDelivery.png)      
 4. Configure GitHub Repository
    ![Configure GitHub Repository](./public/images/readme/4-ConfigureGithub.png)
-   and overwrite the default Source Repository URL setting with the following [GitHub Link]: https://github.com/drtittle/WebRTC
-   
-5. Click 'Create'
-
-6. Open the Eclipse Web IDE
-   ![Open the Eclipse Web IDE](./public/images/readme/5-OpenEclipseWebIDE.png)
-   
+   and overwrite the default Source Repository URL setting with the following [GitHub Link]: https://github.com/drtittle/WebRTC     
+5. Click 'Create'   
+6. Open the Eclipse Web IDE   
+   ![Open the Eclipse Web IDE](./public/images/readme/5-OpenEclipseWebIDE.png)      
 7. Edit the Manifest.yml file changing the 'name;' and 'host:' entries to match the values you entered in Step #2 above.
-   ![Open the Eclipse Web IDE](./public/images/readme/7-EditManifestYML.png) and 'Save' the file.
-   
-8. Goto the Github tab
-   ![Goto GitHub](./public/images/readme/8-GotoGitHub.png) and enter a comment, select 'Commit' and then 'Sync'.
+   ![Open the Eclipse Web IDE](./public/images/readme/7-EditManifestYML.png) and 'Save' the file.      
+8. Goto the Github tab   
+   ![Goto GitHub](./public/images/readme/8-GotoGitHub.png)   
+   and enter a comment, select 'Commit' and then 'Sync'.   
    
 Now, this should cause the pre-provided 'Build' and 'Deploy' stages of the Delivery Pipeline to start, which will cause the new code from the cloned GitHub repository to overwite the original Node.js applcation.
 
