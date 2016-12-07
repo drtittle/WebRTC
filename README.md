@@ -37,7 +37,8 @@ It is important for each user to 'ALLOW' the application access to thier microph
 6. Open the Eclipse Web IDE   
    ![Open the Eclipse Web IDE](./public/images/readme/5-OpenEclipseWebIDE.png)      
 7. Edit the Manifest.yml file changing the 'name;' and 'host:' entries to match the values you entered in Step #2 above.
-   ![Open the Eclipse Web IDE](./public/images/readme/7-EditManifestYML.png) and 'Save' the file.      
+   ![Open the Eclipse Web IDE](./public/images/readme/7-EditManifestYML.png)   
+   and 'Save' the file.      
 8. Goto the Github tab   
    ![Goto GitHub](./public/images/readme/8-GotoGitHub.png)   
    and enter a comment, select 'Commit' and then 'Sync'.   
