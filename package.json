@@ -8,7 +8,7 @@
 	"dependencies": {
 		"express": "4.13.x",
 		"cfenv": "1.0.x",
-		"rtcmulticonnection-v3":"x.x"
+		"rtcmulticonnection-v3":"3.4.3"
 	},
 	"repository": {},
 	"engines": {
