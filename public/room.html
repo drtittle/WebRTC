@@ -106,16 +106,11 @@
 			};
 			*/
 
-			document.getElemedist/ntById('btn-leave-room').onclick = f
-<!--		
-		tion() {
+			document.getElemedist/ntById('btn-leave-room').onclick = function() {
 				this.disabled = true;
 
 				if (connection.isInitiator) {
-					// use
--->		
-		<script src="https://cdn.webrtc-experiment.com:443/FileBufferReader.js"></script>
-		 this method if you did NOT set "autoCloseEntireSession===true"
+					// use this method if you did NOT set "autoCloseEntireSession===true"
 					// for more info: https://github.com/muaz-khan/RTCMultiConnection#closeentiresession
 					connection.closeEntireSession(function() {
 						document.querySelector('h1').innerHTML = 'Entire session has been closed.';
