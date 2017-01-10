@@ -21,7 +21,7 @@ It is important for each user to 'ALLOW' the application access to thier microph
 
 ## Prequisites
 1. A Bluemix account
-2. Access to Githup
+2. Access to Github
 
 ## Create using your Bluemix Dashboard
 1. [Create a Node.js Runtime](https://console.ng.bluemix.net/catalog/starters/sdk-for-nodejs/?taxonomyNavigation=apps)   
